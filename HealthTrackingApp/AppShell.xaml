@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Shell
+    x:Class="HealthTrackingApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:HealthTrackingApp"
+    xmlns:view="clr-namespace:HealthTrackingApp.View"
+    Shell.FlyoutBehavior="Flyout">
+
+    <FlyoutItem Title="Home">
+        <ShellContent
+            Title="Dashboard"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="About">
+        <ShellContent
+            Title="About"
+            ContentTemplate="{DataTemplate view:About}"
+            Route="About" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Settings">
+        <ShellContent
+            Title="Settings"
+            ContentTemplate="{DataTemplate view:Settings}"
+            Route="Settings" />
+    </FlyoutItem>
+
+</Shell>

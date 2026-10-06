@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="HealthTrackingApp.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Health Dashboard">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label
+                Text="Health Dashboard"
+                FontSize="30"
+                FontAttributes="Bold" />
+
+            <Label
+                Text="Good afternoon! Here's your health today."
+                FontSize="16" />
+
+            <!-- Health Score -->
+
+            <Frame
+                Padding="20"
+                CornerRadius="15"
+                HasShadow="True">
+
+                <VerticalStackLayout Spacing="5">
+
+                    <Label
+                        Text="Today's Health Score"
+                        FontSize="18"
+                        FontAttributes="Bold" />
+
+                    <Label
+                        Text="82"
+                        FontSize="42"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center" />
+
+                    <Label
+                        Text="Great progress today!"
+                        FontSize="15"
+                        HorizontalOptions="Center" />
+
+                </VerticalStackLayout>
+
+            </Frame>
+
+            <!-- Health Information -->
+
+            <Grid
+                ColumnDefinitions="*,*"
+                RowDefinitions="Auto,Auto"
+                ColumnSpacing="10"
+                RowSpacing="10">
+
+                <Frame Grid.Row="0" Grid.Column="0" Padding="15">
+                    <VerticalStackLayout>
+                        <Label Text="Steps" FontSize="17" />
+                        <Label Text="7,842" FontSize="24" FontAttributes="Bold" />
+                        <Label Text="Goal: 10,000" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame Grid.Row="0" Grid.Column="1" Padding="15">
+                    <VerticalStackLayout>
+                        <Label Text="💧 Water" FontSize="17" />
+                        <Label Text="1.6 L" FontSize="24" FontAttributes="Bold" />
+                        <Label Text="Goal: 2.0 L" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame Grid.Row="1" Grid.Column="0" Padding="15">
+                    <VerticalStackLayout>
+                        <Label Text="Sleep" FontSize="17" />
+                        <Label Text="7h 42m" FontSize="24" FontAttributes="Bold" />
+                        <Label Text="Last night" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame Grid.Row="1" Grid.Column="1" Padding="15">
+                    <VerticalStackLayout>
+                        <Label Text="Heart Rate" FontSize="17" />
+                        <Label Text="72 BPM" FontSize="24" FontAttributes="Bold" />
+                        <Label Text="Current" />
+                    </VerticalStackLayout>
+                </Frame>
+
+            </Grid>
+
+            <!-- Weekly Steps (bar-style) -->
+
+            <Frame
+                Padding="20"
+                CornerRadius="15">
+
+                <VerticalStackLayout Spacing="10">
+
+                    <Label
+                        Text="Weekly Steps"
+                        FontSize="20"
+                        FontAttributes="Bold" />
+
+                    <!-- Vertical bar chart showing steps per day (bars bottom-aligned) -->
+                    <Grid ColumnDefinitions="*,*,*,*,*,*,*" RowDefinitions="*,Auto" HeightRequest="200" ColumnSpacing="8">
+
+                        <!-- Bars row (Grid.Row=0): each column contains a Frame used as a vertical bar aligned to bottom -->
+                        <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="#512BD4" HeightRequest="118" WidthRequest="28" CornerRadius="6" Padding="0" HasShadow="False" VerticalOptions="End" HorizontalOptions="Center" />
+                        <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="#4CAF50" HeightRequest="96" WidthRequest="28" CornerRadius="6" Padding="0" HasShadow="False" VerticalOptions="End" HorizontalOptions="Center" />
+                        <Frame Grid.Row="0" Grid.Column="2" BackgroundColor="#FF9800" HeightRequest="122" WidthRequest="28" CornerRadius="6" Padding="0" HasShadow="False" VerticalOptions="End" HorizontalOptions="Center" />
+                        <Frame Grid.Row="0" Grid.Column="3" BackgroundColor="#2196F3" HeightRequest="135" WidthRequest="28" CornerRadius="6" Padding="0" HasShadow="False" VerticalOptions="End" HorizontalOptions="Center" />
+                        <Frame Grid.Row="0" Grid.Column="4" BackgroundColor="#9C27B0" HeightRequest="150" WidthRequest="28" CornerRadius="6" Padding="0" HasShadow="False" VerticalOptions="End" HorizontalOptions="Center" />
+                        <Frame Grid.Row="0" Grid.Column="5" BackgroundColor="#E91E63" HeightRequest="150" WidthRequest="28" CornerRadius="6" Padding="0" HasShadow="False" VerticalOptions="End" HorizontalOptions="Center" />
+                        <Frame Grid.Row="0" Grid.Column="6" BackgroundColor="#00BCD4" HeightRequest="119" WidthRequest="28" CornerRadius="6" Padding="0" HasShadow="False" VerticalOptions="End" HorizontalOptions="Center" />
+
+                        <!-- Labels row (Grid.Row=1): day and steps for each column -->
+                        <VerticalStackLayout Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" Spacing="2">
+                            <Label Text="Mon" FontSize="12" HorizontalOptions="Center" />
+                            <Label Text="7,842" FontSize="12" HorizontalOptions="Center" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" Spacing="2">
+                            <Label Text="Tue" FontSize="12" HorizontalOptions="Center" />
+                            <Label Text="6,410" FontSize="12" HorizontalOptions="Center" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Row="1" Grid.Column="2" HorizontalOptions="Center" Spacing="2">
+                            <Label Text="Wed" FontSize="12" HorizontalOptions="Center" />
+                            <Label Text="8,120" FontSize="12" HorizontalOptions="Center" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Row="1" Grid.Column="3" HorizontalOptions="Center" Spacing="2">
+                            <Label Text="Thu" FontSize="12" HorizontalOptions="Center" />
+                            <Label Text="9,005" FontSize="12" HorizontalOptions="Center" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Row="1" Grid.Column="4" HorizontalOptions="Center" Spacing="2">
+                            <Label Text="Fri" FontSize="12" HorizontalOptions="Center" />
+                            <Label Text="10,230" FontSize="12" HorizontalOptions="Center" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Row="1" Grid.Column="5" HorizontalOptions="Center" Spacing="2">
+                            <Label Text="Sat" FontSize="12" HorizontalOptions="Center" />
+                            <Label Text="11,450" FontSize="12" HorizontalOptions="Center" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Row="1" Grid.Column="6" HorizontalOptions="Center" Spacing="2">
+                            <Label Text="Sun" FontSize="12" HorizontalOptions="Center" />
+                            <Label Text="7,900" FontSize="12" HorizontalOptions="Center" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+                    <Label
+                        Text="Bars show daily steps relative to a 10,000 step goal."
+                        HorizontalOptions="Center" />
+
+                </VerticalStackLayout>
+
+            </Frame>
+
+           
+            <Button
+                Text="View Progress"
+                Clicked="OnProgressClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
