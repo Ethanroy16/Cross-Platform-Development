@@ -15,6 +15,7 @@ public class Progress : ContentPage
             }
         };
 
+
         VerticalStackLayout content = new VerticalStackLayout
         {
             Padding = 20,
@@ -43,6 +44,7 @@ public class Progress : ContentPage
                 new ColumnDefinition(GridLength.Star),
                 new ColumnDefinition(GridLength.Star),
                 new ColumnDefinition(GridLength.Star),
+                new ColumnDefinition(GridLength.Star),
                 new ColumnDefinition(GridLength.Star)
             },
             Padding = 5
@@ -51,7 +53,7 @@ public class Progress : ContentPage
 
         Button homeButton = new Button
         {
-            Text = "Home"
+            ImageSource = "home.png",
         };
 
         homeButton.Clicked += async (sender, e) =>
@@ -59,44 +61,58 @@ public class Progress : ContentPage
             await Navigation.PopToRootAsync();
         };
 
+        Button exerciseButton = new Button
+        {
+            ImageSource = "exercise.png",
+        };
+
+        exerciseButton.Clicked += async (sender, e) =>
+        {
+            await Navigation.PushAsync(new Exercise());
+        };
 
         Button progressButton = new Button
         {
-            Text = "Progress"
+            ImageSource = "progress.png",
         };
 
-
-        Button settingsButton = new Button
+        progressButton.Clicked += async (sender, e) =>
         {
-            Text = "Settings"
+            await Navigation.PushAsync(new Progress());
         };
 
-        settingsButton.Clicked += async (sender, e) =>
+        Button sleepButton = new Button
         {
-            await Navigation.PushAsync(new Settings());
+            ImageSource = "sleep.png",
         };
 
-
-        Button aboutButton = new Button
+        sleepButton.Clicked += async (sender, e) =>
         {
-            Text = "About"
+            await Navigation.PushAsync(new Sleep());
         };
 
-        aboutButton.Clicked += async (sender, e) =>
+        Button heartButton = new Button
         {
-            await Navigation.PushAsync(new About());
+            ImageSource = "heart.png",
+        };
+
+        heartButton.Clicked += async (sender, e) =>
+        {
+            await Navigation.PushAsync(new Heart());
         };
 
 
         navigation.Add(homeButton);
+        navigation.Add(exerciseButton);
         navigation.Add(progressButton);
-        navigation.Add(settingsButton);
-        navigation.Add(aboutButton);
+        navigation.Add(sleepButton);
+        navigation.Add(heartButton);
 
         Grid.SetColumn(homeButton, 0);
-        Grid.SetColumn(progressButton, 1);
-        Grid.SetColumn(settingsButton, 2);
-        Grid.SetColumn(aboutButton, 3);
+        Grid.SetColumn(exerciseButton, 1);
+        Grid.SetColumn(progressButton, 2);
+        Grid.SetColumn(sleepButton, 3);
+        Grid.SetColumn(heartButton, 4);
 
         mainGrid.Add(navigation);
         Grid.SetRow(navigation, 1);

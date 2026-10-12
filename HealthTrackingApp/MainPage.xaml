@@ -21,19 +21,46 @@
 
                 <!-- HEADER -->
 
-                <VerticalStackLayout
-                    Spacing="4">
+                <Grid ColumnDefinitions="*,Auto" VerticalOptions="Start" HorizontalOptions="Fill">
 
-                    <Label
-                        Text="Today"
-                        FontSize="16" />
+                    <VerticalStackLayout Grid.Column="0"
+                        Spacing="4">
 
-                    <Label
-                        Text="Your Health"
-                        FontSize="28"
-                        FontAttributes="Bold" />
+                        <Label
+                            Text="Welcome back, User"
+                            FontSize="16" />
 
-                </VerticalStackLayout>
+                        <Label
+                            Text="Your Health Statistics for today."
+                            FontSize="28"
+                            FontAttributes="Bold" />
+
+                    </VerticalStackLayout>
+
+                    <!-- Profile avatar (top-right). Tapping opens the profile page. -->
+                    <Frame
+                        Grid.Column="1"
+                        WidthRequest="48"
+                        HeightRequest="48"
+                        CornerRadius="24"
+                        BackgroundColor="#E0E0E0"
+                        Padding="0"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start">
+
+                        <Image
+                            Source="profile.png"
+                            Aspect="AspectFill"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill" />
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnProfileTapped" NumberOfTapsRequired="1" />
+                        </Frame.GestureRecognizers>
+
+                    </Frame>
+
+                </Grid>
 
 
                 <!-- DAY PROGRESS -->
@@ -289,7 +316,7 @@
         <Grid
             Grid.Row="1"
             HeightRequest="75"
-            ColumnDefinitions="*,*,*,*"
+            ColumnDefinitions="*,*,*,*,*"
             Padding="5">
 
 
@@ -297,32 +324,38 @@
 
             <Button
                 Grid.Column="0"
-                Text="Home"
-                Clicked="OnHomeClicked" />
+                Clicked="OnHomeClicked"
+                ImageSource="home.png" />
+            
+            <!-- EXERCISE -->
+
+            <Button
+                Grid.Column="1"
+                Clicked="OnExerciseClicked"
+                ImageSource="exercise.png" />
 
 
             <!-- PROGRESS -->
 
             <Button
-                Grid.Column="1"
-                Text="Progress"
-                Clicked="OnProgressClicked" />
-
-
-            <!-- SETTINGS -->
-
-            <Button
                 Grid.Column="2"
-                Text="Settings"
-                Clicked="OnSettingsClicked" />
+                Clicked="OnProgressClicked"
+                ImageSource="progress.png" />
 
 
-            <!-- ABOUT -->
+            <!-- SLEEP -->
 
             <Button
                 Grid.Column="3"
-                Text="About"
-                Clicked="OnAboutClicked" />
+                Clicked="OnSleepClicked"
+                ImageSource="sleep.png" />
+            
+            <Button
+                Grid.Column="4"
+                Clicked="OnHeartClicked"
+                ImageSource="heart.png" />
+
+
 
         </Grid>
 

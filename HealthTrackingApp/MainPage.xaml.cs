@@ -10,11 +10,20 @@ public partial class MainPage : ContentPage
     }
 
 
-    private void OnHomeClicked(object sender, EventArgs e)
+    private async void OnHomeClicked(object sender, EventArgs e)
     {
         // Already on Home
     }
 
+    private async void OnExerciseClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new View.Exercise());
+    }
+
+    private async void OnSleepClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new View.Sleep());
+    }
 
     private async void OnProgressClicked(object sender, EventArgs e)
     {
@@ -31,6 +40,16 @@ public partial class MainPage : ContentPage
     private async void OnAboutClicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new View.About());
+    }
+
+    private async void OnHeartClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new View.Heart());
+    }
+
+    private async void OnProfileTapped(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new View.profile());
     }
 }
 

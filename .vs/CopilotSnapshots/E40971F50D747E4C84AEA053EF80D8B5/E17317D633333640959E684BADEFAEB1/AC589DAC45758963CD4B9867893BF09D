@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="HealthTrackingApp.MainPage"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="*,Auto">
+
+        <!-- ========================= -->
+        <!-- MAIN DASHBOARD             -->
+        <!-- ========================= -->
+
+        <ScrollView Grid.Row="0">
+
+            <VerticalStackLayout
+                Padding="20"
+                Spacing="18">
+
+
+                <!-- HEADER -->
+
+                <Grid ColumnDefinitions="*,Auto" VerticalOptions="Start" HorizontalOptions="Fill">
+
+                    <VerticalStackLayout Grid.Column="0"
+                        Spacing="4">
+
+                        <Label
+                            Text="Welcome back, User"
+                            FontSize="16" />
+
+                        <Label
+                            Text="Your Health Statistics for today."
+                            FontSize="28"
+                            FontAttributes="Bold" />
+
+                    </VerticalStackLayout>
+
+                    <!-- Profile avatar (top-right). Tapping opens the profile page. -->
+                    <Frame
+                        Grid.Column="1"
+                        WidthRequest="48"
+                        HeightRequest="48"
+                        CornerRadius="24"
+                        BackgroundColor="#E0E0E0"
+                        Padding="0"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start">
+
+                        <Label
+                            Text="U"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            FontAttributes="Bold" />
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnProfileTapped" NumberOfTapsRequired="1" />
+                        </Frame.GestureRecognizers>
+
+                    </Frame>
+
+                </Grid>
+
+
+                <!-- DAY PROGRESS -->
+
+                <Frame
+                    HeightRequest="90"
+                    CornerRadius="18"
+                    Padding="15">
+
+                    <VerticalStackLayout
+                        Spacing="5">
+
+                        <Label
+                            Text="Day Progress"
+                            FontSize="18"
+                            FontAttributes="Bold" />
+
+                        <Label
+                            Text="75% complete"
+                            FontSize="14" />
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+
+                <!-- ========================= -->
+                <!-- FOUR MINI HEALTH BOXES    -->
+                <!-- ========================= -->
+
+                <Grid
+                    ColumnDefinitions="*,*"
+                    RowDefinitions="*,*"
+                    ColumnSpacing="12"
+                    RowSpacing="12">
+
+
+                    <!-- STEPS -->
+
+                    <Frame
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HeightRequest="120"
+                        CornerRadius="18"
+                        Padding="15">
+
+                        <VerticalStackLayout
+                            Spacing="5">
+
+                            <Label
+                                Text="Steps"
+                                FontSize="15" />
+
+                            <Label
+                                Text="8,450"
+                                FontSize="24"
+                                FontAttributes="Bold" />
+
+                            <Label
+                                Text="steps today"
+                                FontSize="12" />
+
+                        </VerticalStackLayout>
+
+                    </Frame>
+
+
+                    <!-- WATER -->
+
+                    <Frame
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HeightRequest="120"
+                        CornerRadius="18"
+                        Padding="15">
+
+                        <VerticalStackLayout
+                            Spacing="5">
+
+                            <Label
+                                Text="Water"
+                                FontSize="15" />
+
+                            <Label
+                                Text="1.7 L"
+                                FontSize="24"
+                                FontAttributes="Bold" />
+
+                            <Label
+                                Text="of 2.0 L"
+                                FontSize="12" />
+
+                        </VerticalStackLayout>
+
+                    </Frame>
+
+
+                    <!-- SLEEP -->
+
+                    <Frame
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HeightRequest="120"
+                        CornerRadius="18"
+                        Padding="15">
+
+                        <VerticalStackLayout
+                            Spacing="5">
+
+                            <Label
+                                Text="Sleep"
+                                FontSize="15" />
+
+                            <Label
+                                Text="7h 24m"
+                                FontSize="24"
+                                FontAttributes="Bold" />
+
+                            <Label
+                                Text="last night"
+                                FontSize="12" />
+
+                        </VerticalStackLayout>
+
+                    </Frame>
+
+
+                    <!-- HEART RATE -->
+
+                    <Frame
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        HeightRequest="120"
+                        CornerRadius="18"
+                        Padding="15">
+
+                        <VerticalStackLayout
+                            Spacing="5">
+
+                            <Label
+                                Text="Heart Rate"
+                                FontSize="15" />
+
+                            <Label
+                                Text="72 BPM"
+                                FontSize="24"
+                                FontAttributes="Bold" />
+
+                            <Label
+                                Text="current"
+                                FontSize="12" />
+
+                        </VerticalStackLayout>
+
+                    </Frame>
+
+                </Grid>
+
+
+                <!-- ========================= -->
+                <!-- STEPS LINE CHART           -->
+                <!-- ========================= -->
+
+                <Frame
+                    HeightRequest="235"
+                    CornerRadius="18"
+                    Padding="12">
+
+                    <VerticalStackLayout
+                        Spacing="5">
+
+                        <Label
+                            Text="Steps"
+                            FontSize="18"
+                            FontAttributes="Bold" />
+
+                        <Label
+                            Text="Monday - Sunday"
+                            FontSize="12" />
+
+
+                        <!-- GRAPH -->
+
+                        <GraphicsView
+                            x:Name="StepsChart"
+                            HeightRequest="145"
+                            HorizontalOptions="Fill" />
+
+
+                        <!-- DAYS -->
+
+                        <Grid
+                            ColumnDefinitions="*,*,*,*,*,*,*"
+                            Margin="0,-2,0,0">
+
+                            <Label
+                                Grid.Column="0"
+                                Text="Mon"
+                                HorizontalTextAlignment="Center"
+                                FontSize="10" />
+
+                            <Label
+                                Grid.Column="1"
+                                Text="Tue"
+                                HorizontalTextAlignment="Center"
+                                FontSize="10" />
+
+                            <Label
+                                Grid.Column="2"
+                                Text="Wed"
+                                HorizontalTextAlignment="Center"
+                                FontSize="10" />
+
+                            <Label
+                                Grid.Column="3"
+                                Text="Thu"
+                                HorizontalTextAlignment="Center"
+                                FontSize="10" />
+
+                            <Label
+                                Grid.Column="4"
+                                Text="Fri"
+                                HorizontalTextAlignment="Center"
+                                FontSize="10" />
+
+                            <Label
+                                Grid.Column="5"
+                                Text="Sat"
+                                HorizontalTextAlignment="Center"
+                                FontSize="10" />
+
+                            <Label
+                                Grid.Column="6"
+                                Text="Sun"
+                                HorizontalTextAlignment="Center"
+                                FontSize="10" />
+
+                        </Grid>
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+
+        <!-- ========================= -->
+        <!-- BOTTOM NAVIGATION          -->
+        <!-- ========================= -->
+
+        <Grid
+            Grid.Row="1"
+            HeightRequest="75"
+            ColumnDefinitions="*,*,*,*,*"
+            Padding="5">
+
+
+            <!-- HOME -->
+
+            <Button
+                Grid.Column="0"
+                Clicked="OnHomeClicked"
+                ImageSource="home.png" />
+            
+            <!-- EXERCISE -->
+
+            <Button
+                Grid.Column="1"
+                Clicked="OnExerciseClicked"
+                ImageSource="exercise.png" />
+
+
+            <!-- PROGRESS -->
+
+            <Button
+                Grid.Column="2"
+                Clicked="OnProgressClicked"
+                ImageSource="progress.png" />
+
+
+            <!-- SLEEP -->
+
+            <Button
+                Grid.Column="3"
+                Clicked="OnSleepClicked"
+                ImageSource="sleep.png" />
+            
+            <Button
+                Grid.Column="4"
+                Clicked="OnHeartClicked"
+                ImageSource="heart.png" />
+
+
+
+        </Grid>
+
+    </Grid>
+
+</ContentPage>
