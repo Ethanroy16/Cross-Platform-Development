@@ -1,9 +1,11 @@
+using Microsoft.Maui.Controls.Shapes;
+
 namespace HealthTrackingApp.View;
 
 public class Heart : ContentPage
 {
-	public Heart()
-	{
+    public Heart()
+    {
         Title = "Heart Monitoring";
 
         Grid mainGrid = new Grid
@@ -15,27 +17,168 @@ public class Heart : ContentPage
             }
         };
 
+        // =========================
+        // PAGE CONTENT
+        // =========================
+
+        ScrollView scrollView = new ScrollView();
 
         VerticalStackLayout content = new VerticalStackLayout
         {
-            Padding = 20,
-            Spacing = 20
+            Padding = 25,
+            Spacing = 18,
+            BackgroundColor = Color.FromArgb("#FFF0F3")
         };
 
         Label title = new Label
         {
-            Text = " ",
-            FontSize = 30,
+            Text = "Heart Monitoring",
+            FontSize = 32,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Color.FromArgb("#FF4D6D")
+        };
+
+        Label subtitle = new Label
+        {
+            Text = "View your recent heart rate information.",
+            FontSize = 16,
+            TextColor = Color.FromArgb("#6B7A76")
+        };
+
+        Border heartCard = new Border
+        {
+            BackgroundColor = Colors.White,
+            Stroke = Color.FromArgb("#FFD6DE"),
+            StrokeThickness = 1,
+            Padding = 20,
+            StrokeShape = new RoundRectangle
+            {
+                CornerRadius = 15
+            }
+        };
+
+        VerticalStackLayout heartContent = new VerticalStackLayout
+        {
+            Spacing = 7
+        };
+
+        heartContent.Children.Add(new Label
+        {
+            Text = "Resting Heart Rate",
+            FontSize = 16,
+            FontAttributes = FontAttributes.Bold
+        });
+
+        heartContent.Children.Add(new Label
+        {
+            Text = "58 bpm",
+            FontSize = 32,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Color.FromArgb("#FF4D6D")
+        });
+
+        heartContent.Children.Add(new Label
+        {
+            Text = "Within your normal range",
+            FontSize = 15,
+            TextColor = Color.FromArgb("#6B7A76")
+        });
+
+        heartCard.Content = heartContent;
+
+        Label recentTitle = new Label
+        {
+            Text = "Recent Readings",
+            FontSize = 21,
             FontAttributes = FontAttributes.Bold
         };
 
+        Border todayCard = new Border
+        {
+            BackgroundColor = Colors.White,
+            Stroke = Color.FromArgb("#FFD6DE"),
+            StrokeThickness = 1,
+            Padding = 15,
+            StrokeShape = new RoundRectangle
+            {
+                CornerRadius = 12
+            },
+            Content = new Label
+            {
+                Text = "Today                         58 bpm",
+                FontSize = 15
+            }
+        };
+
+        Border yesterdayCard = new Border
+        {
+            BackgroundColor = Colors.White,
+            Stroke = Color.FromArgb("#FFD6DE"),
+            StrokeThickness = 1,
+            Padding = 15,
+            StrokeShape = new RoundRectangle
+            {
+                CornerRadius = 12
+            },
+            Content = new Label
+            {
+                Text = "Yesterday                    61 bpm",
+                FontSize = 15
+            }
+        };
+
+        Border sundayCard = new Border
+        {
+            BackgroundColor = Colors.White,
+            Stroke = Color.FromArgb("#FFD6DE"),
+            StrokeThickness = 1,
+            Padding = 15,
+            StrokeShape = new RoundRectangle
+            {
+                CornerRadius = 12
+            },
+            Content = new Label
+            {
+                Text = "Sunday                       60 bpm",
+                FontSize = 15
+            }
+        };
+
+        Button recordButton = new Button
+        {
+            Text = "Record Heart Rate",
+            FontSize = 16,
+            FontAttributes = FontAttributes.Bold,
+            BackgroundColor = Color.FromArgb("#FF4D6D"),
+            TextColor = Colors.White,
+            CornerRadius = 12,
+            HeightRequest = 50
+        };
+
+        recordButton.Clicked += async (sender, e) =>
+        {
+            await DisplayAlert(
+                "Heart Rate",
+                "Heart rate reading recorded.",
+                "OK");
+        };
+
         content.Children.Add(title);
+        content.Children.Add(subtitle);
+        content.Children.Add(heartCard);
+        content.Children.Add(recentTitle);
+        content.Children.Add(todayCard);
+        content.Children.Add(yesterdayCard);
+        content.Children.Add(sundayCard);
+        content.Children.Add(recordButton);
 
-        mainGrid.Add(content);
-        Grid.SetRow(content, 0);
+        scrollView.Content = content;
 
+        mainGrid.Add(scrollView, 0, 0);
 
-        // Bottom Navigation
+        // =========================
+        // BOTTOM NAVIGATION
+        // =========================
 
         Grid navigation = new Grid
         {
@@ -47,13 +190,18 @@ public class Heart : ContentPage
                 new ColumnDefinition(GridLength.Star),
                 new ColumnDefinition(GridLength.Star)
             },
-            Padding = 5
+            Padding = 5,
+            BackgroundColor = Colors.White
         };
-
 
         Button homeButton = new Button
         {
-            ImageSource = "home.png",
+            Text = "HOME",
+            FontSize = 11,
+            FontAttributes = FontAttributes.Bold,
+            BackgroundColor = Colors.Transparent,
+            TextColor = Color.FromArgb("#6B7A76"),
+            Padding = 0
         };
 
         homeButton.Clicked += async (sender, e) =>
@@ -63,7 +211,12 @@ public class Heart : ContentPage
 
         Button exerciseButton = new Button
         {
-            ImageSource = "exercise.png",
+            Text = "EXERCISE",
+            FontSize = 11,
+            FontAttributes = FontAttributes.Bold,
+            BackgroundColor = Colors.Transparent,
+            TextColor = Color.FromArgb("#6B7A76"),
+            Padding = 0
         };
 
         exerciseButton.Clicked += async (sender, e) =>
@@ -73,7 +226,12 @@ public class Heart : ContentPage
 
         Button progressButton = new Button
         {
-            ImageSource = "progress.png",
+            Text = "PROGRESS",
+            FontSize = 11,
+            FontAttributes = FontAttributes.Bold,
+            BackgroundColor = Colors.Transparent,
+            TextColor = Color.FromArgb("#6B7A76"),
+            Padding = 0
         };
 
         progressButton.Clicked += async (sender, e) =>
@@ -83,7 +241,12 @@ public class Heart : ContentPage
 
         Button sleepButton = new Button
         {
-            ImageSource = "sleep.png",
+            Text = "SLEEP",
+            FontSize = 11,
+            FontAttributes = FontAttributes.Bold,
+            BackgroundColor = Colors.Transparent,
+            TextColor = Color.FromArgb("#6B7A76"),
+            Padding = 0
         };
 
         sleepButton.Clicked += async (sender, e) =>
@@ -93,7 +256,12 @@ public class Heart : ContentPage
 
         Button heartButton = new Button
         {
-            ImageSource = "heart.png",
+            Text = "HEART",
+            FontSize = 11,
+            FontAttributes = FontAttributes.Bold,
+            BackgroundColor = Colors.Transparent,
+            TextColor = Color.FromArgb("#FF4D6D"),
+            Padding = 0
         };
 
         heartButton.Clicked += async (sender, e) =>
@@ -101,22 +269,13 @@ public class Heart : ContentPage
             await Navigation.PushAsync(new Heart());
         };
 
+        navigation.Add(homeButton, 0, 0);
+        navigation.Add(exerciseButton, 1, 0);
+        navigation.Add(progressButton, 2, 0);
+        navigation.Add(sleepButton, 3, 0);
+        navigation.Add(heartButton, 4, 0);
 
-        navigation.Add(homeButton);
-        navigation.Add(exerciseButton);
-        navigation.Add(progressButton);
-        navigation.Add(sleepButton);
-        navigation.Add(heartButton); 
-
-        Grid.SetColumn(homeButton, 0);
-        Grid.SetColumn(exerciseButton, 1);
-        Grid.SetColumn(progressButton, 2);
-        Grid.SetColumn(sleepButton, 3);
-        Grid.SetColumn(heartButton, 4);
-
-        mainGrid.Add(navigation);
-        Grid.SetRow(navigation, 1);
-
+        mainGrid.Add(navigation, 0, 1);
 
         Content = mainGrid;
 

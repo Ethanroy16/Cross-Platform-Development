@@ -1,10 +1,11 @@
+using Microsoft.Maui.Controls.Shapes;
+
 namespace HealthTrackingApp.View;
 
 public class profile : ContentPage
 {
-	public profile()
-	{
-
+    public profile()
+    {
         Title = "Profile";
 
         Grid mainGrid = new Grid
@@ -16,27 +17,166 @@ public class profile : ContentPage
             }
         };
 
+        // =========================
+        // PAGE CONTENT
+        // =========================
+
+        ScrollView scrollView = new ScrollView();
 
         VerticalStackLayout content = new VerticalStackLayout
         {
-            Padding = 20,
-            Spacing = 20
+            Padding = 25,
+            Spacing = 18,
+            BackgroundColor = Color.FromArgb("#E6F7F5")
         };
 
         Label title = new Label
         {
-            Text = " ",
-            FontSize = 30,
+            Text = "My Profile",
+            FontSize = 32,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Color.FromArgb("#00A896")
+        };
+
+        Label subtitle = new Label
+        {
+            Text = "Manage your personal health information.",
+            FontSize = 16,
+            TextColor = Color.FromArgb("#6B7A76")
+        };
+
+        Border profileCard = new Border
+        {
+            BackgroundColor = Colors.White,
+            Stroke = Color.FromArgb("#C9EAE5"),
+            StrokeThickness = 1,
+            Padding = 20,
+            StrokeShape = new RoundRectangle
+            {
+                CornerRadius = 15
+            }
+        };
+
+        VerticalStackLayout profileContent = new VerticalStackLayout
+        {
+            Spacing = 8
+        };
+
+        Label name = new Label
+        {
+            Text = "Alex Morgan",
+            FontSize = 25,
+            FontAttributes = FontAttributes.Bold,
+            HorizontalOptions = LayoutOptions.Center,
+            TextColor = Color.FromArgb("#17211F")
+        };
+
+        Label email = new Label
+        {
+            Text = "alex@example.com",
+            FontSize = 15,
+            HorizontalOptions = LayoutOptions.Center,
+            TextColor = Color.FromArgb("#6B7A76")
+        };
+
+        profileContent.Children.Add(name);
+        profileContent.Children.Add(email);
+
+        profileCard.Content = profileContent;
+
+        Label informationTitle = new Label
+        {
+            Text = "Personal Information",
+            FontSize = 21,
             FontAttributes = FontAttributes.Bold
         };
 
+        Border ageCard = new Border
+        {
+            BackgroundColor = Colors.White,
+            Stroke = Color.FromArgb("#C9EAE5"),
+            StrokeThickness = 1,
+            Padding = 15,
+            StrokeShape = new RoundRectangle
+            {
+                CornerRadius = 12
+            },
+            Content = new Label
+            {
+                Text = "Age: 21",
+                FontSize = 16
+            }
+        };
+
+        Border heightCard = new Border
+        {
+            BackgroundColor = Colors.White,
+            Stroke = Color.FromArgb("#C9EAE5"),
+            StrokeThickness = 1,
+            Padding = 15,
+            StrokeShape = new RoundRectangle
+            {
+                CornerRadius = 12
+            },
+            Content = new Label
+            {
+                Text = "Height: 178 cm",
+                FontSize = 16
+            }
+        };
+
+        Border weightCard = new Border
+        {
+            BackgroundColor = Colors.White,
+            Stroke = Color.FromArgb("#C9EAE5"),
+            StrokeThickness = 1,
+            Padding = 15,
+            StrokeShape = new RoundRectangle
+            {
+                CornerRadius = 12
+            },
+            Content = new Label
+            {
+                Text = "Weight: 72.4 kg",
+                FontSize = 16
+            }
+        };
+
+        Button editButton = new Button
+        {
+            Text = "Edit Profile",
+            FontSize = 16,
+            FontAttributes = FontAttributes.Bold,
+            BackgroundColor = Color.FromArgb("#00A896"),
+            TextColor = Colors.White,
+            CornerRadius = 12,
+            HeightRequest = 50
+        };
+
+        editButton.Clicked += async (sender, e) =>
+        {
+            await DisplayAlert(
+                "Profile",
+                "Profile editing would be available here.",
+                "OK");
+        };
+
         content.Children.Add(title);
+        content.Children.Add(subtitle);
+        content.Children.Add(profileCard);
+        content.Children.Add(informationTitle);
+        content.Children.Add(ageCard);
+        content.Children.Add(heightCard);
+        content.Children.Add(weightCard);
+        content.Children.Add(editButton);
 
-        mainGrid.Add(content);
-        Grid.SetRow(content, 0);
+        scrollView.Content = content;
 
+        mainGrid.Add(scrollView, 0, 0);
 
-        // Bottom Navigation
+        // =========================
+        // BOTTOM NAVIGATION
+        // =========================
 
         Grid navigation = new Grid
         {
@@ -48,13 +188,18 @@ public class profile : ContentPage
                 new ColumnDefinition(GridLength.Star),
                 new ColumnDefinition(GridLength.Star)
             },
-            Padding = 5
+            Padding = 5,
+            BackgroundColor = Colors.White
         };
-
 
         Button homeButton = new Button
         {
-            ImageSource = "home.png",
+            Text = "HOME",
+            FontSize = 11,
+            FontAttributes = FontAttributes.Bold,
+            BackgroundColor = Colors.Transparent,
+            TextColor = Color.FromArgb("#6B7A76"),
+            Padding = 0
         };
 
         homeButton.Clicked += async (sender, e) =>
@@ -64,7 +209,12 @@ public class profile : ContentPage
 
         Button exerciseButton = new Button
         {
-            ImageSource = "exercise.png",
+            Text = "EXERCISE",
+            FontSize = 11,
+            FontAttributes = FontAttributes.Bold,
+            BackgroundColor = Colors.Transparent,
+            TextColor = Color.FromArgb("#6B7A76"),
+            Padding = 0
         };
 
         exerciseButton.Clicked += async (sender, e) =>
@@ -74,7 +224,12 @@ public class profile : ContentPage
 
         Button progressButton = new Button
         {
-            ImageSource = "progress.png",
+            Text = "PROGRESS",
+            FontSize = 11,
+            FontAttributes = FontAttributes.Bold,
+            BackgroundColor = Colors.Transparent,
+            TextColor = Color.FromArgb("#6B7A76"),
+            Padding = 0
         };
 
         progressButton.Clicked += async (sender, e) =>
@@ -84,7 +239,12 @@ public class profile : ContentPage
 
         Button sleepButton = new Button
         {
-            ImageSource = "sleep.png",
+            Text = "SLEEP",
+            FontSize = 11,
+            FontAttributes = FontAttributes.Bold,
+            BackgroundColor = Colors.Transparent,
+            TextColor = Color.FromArgb("#6B7A76"),
+            Padding = 0
         };
 
         sleepButton.Clicked += async (sender, e) =>
@@ -94,7 +254,12 @@ public class profile : ContentPage
 
         Button heartButton = new Button
         {
-            ImageSource = "heart.png",
+            Text = "HEART",
+            FontSize = 11,
+            FontAttributes = FontAttributes.Bold,
+            BackgroundColor = Colors.Transparent,
+            TextColor = Color.FromArgb("#6B7A76"),
+            Padding = 0
         };
 
         heartButton.Clicked += async (sender, e) =>
@@ -102,22 +267,13 @@ public class profile : ContentPage
             await Navigation.PushAsync(new Heart());
         };
 
+        navigation.Add(homeButton, 0, 0);
+        navigation.Add(exerciseButton, 1, 0);
+        navigation.Add(progressButton, 2, 0);
+        navigation.Add(sleepButton, 3, 0);
+        navigation.Add(heartButton, 4, 0);
 
-        navigation.Add(homeButton);
-        navigation.Add(exerciseButton);
-        navigation.Add(progressButton);
-        navigation.Add(sleepButton);
-        navigation.Add(heartButton);
-
-        Grid.SetColumn(homeButton, 0);
-        Grid.SetColumn(exerciseButton, 1);
-        Grid.SetColumn(progressButton, 2);
-        Grid.SetColumn(sleepButton, 3);
-        Grid.SetColumn(heartButton, 4);
-
-        mainGrid.Add(navigation);
-        Grid.SetRow(navigation, 1);
-
+        mainGrid.Add(navigation, 0, 1);
 
         Content = mainGrid;
 

@@ -4,92 +4,129 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="HealthTrackingApp.MainPage"
-    NavigationPage.HasNavigationBar="False">
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="#F4F8F6">
 
     <Grid RowDefinitions="*,Auto">
 
-        <!-- ========================= -->
-        <!-- MAIN DASHBOARD             -->
-        <!-- ========================= -->
+
+        <!-- ================================= -->
+        <!-- MAIN DASHBOARD                    -->
+        <!-- ================================= -->
 
         <ScrollView Grid.Row="0">
 
             <VerticalStackLayout
-                Padding="20"
+                Padding="24,25,24,20"
                 Spacing="18">
 
 
-                <!-- HEADER -->
+                <!-- ============================= -->
+                <!-- HEADER                         -->
+                <!-- ============================= -->
 
-                <Grid ColumnDefinitions="*,Auto" VerticalOptions="Start" HorizontalOptions="Fill">
+                <Grid
+                    ColumnDefinitions="*,Auto">
 
-                    <VerticalStackLayout Grid.Column="0"
-                        Spacing="4">
+                    <VerticalStackLayout
+                        Grid.Column="0"
+                        Spacing="3">
 
                         <Label
-                            Text="Welcome back, User"
-                            FontSize="16" />
+                            Text="Good morning 👋"
+                            FontSize="15"
+                            TextColor="#6B7A76" />
 
                         <Label
-                            Text="Your Health Statistics for today."
-                            FontSize="28"
-                            FontAttributes="Bold" />
+                            Text="Your Health"
+                            FontSize="31"
+                            FontAttributes="Bold"
+                            TextColor="#17211F" />
+
+                        <Label
+                            Text="Here's how you're doing today"
+                            FontSize="14"
+                            TextColor="#7C8A86" />
 
                     </VerticalStackLayout>
 
-                    <!-- Profile avatar (top-right). Tapping opens the profile page. -->
-                    <Frame
+
+                    <!-- Profile button -->
+
+                    <Button
                         Grid.Column="1"
-                        WidthRequest="48"
-                        HeightRequest="48"
-                        CornerRadius="24"
-                        BackgroundColor="#E0E0E0"
+                        Text="●"
+                        FontSize="20"
+                        TextColor="White"
+                        BackgroundColor="#19B89A"
+                        WidthRequest="52"
+                        HeightRequest="52"
+                        CornerRadius="26"
                         Padding="0"
-                        HorizontalOptions="End"
-                        VerticalOptions="Start">
-
-                        <Image
-                            Source="profile.png"
-                            Aspect="AspectFill"
-                            HorizontalOptions="Fill"
-                            VerticalOptions="Fill" />
-
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnProfileTapped" NumberOfTapsRequired="1" />
-                        </Frame.GestureRecognizers>
-
-                    </Frame>
+                        VerticalOptions="Center"
+                        Clicked="OnProfileClicked" />
 
                 </Grid>
 
 
-                <!-- DAY PROGRESS -->
+                <!-- ============================= -->
+                <!-- DAY PROGRESS                   -->
+                <!-- ============================= -->
 
                 <Frame
-                    HeightRequest="90"
-                    CornerRadius="18"
-                    Padding="15">
+                    BackgroundColor="#19B89A"
+                    BorderColor="#19B89A"
+                    CornerRadius="22"
+                    Padding="20"
+                    HasShadow="False">
 
-                    <VerticalStackLayout
-                        Spacing="5">
+                    <Grid
+                        ColumnDefinitions="*,Auto">
+
+                        <VerticalStackLayout
+                            Grid.Column="0"
+                            Spacing="5">
+
+                            <Label
+                                Text="Today's Progress"
+                                FontSize="17"
+                                FontAttributes="Bold"
+                                TextColor="White" />
+
+                            <Label
+                                Text="You're doing great!"
+                                FontSize="13"
+                                TextColor="#DDF8F1" />
+
+                            <Label
+                                Text="75% complete"
+                                FontSize="24"
+                                FontAttributes="Bold"
+                                TextColor="White"
+                                Margin="0,8,0,0" />
+
+                        </VerticalStackLayout>
+
+
+                        <!-- Progress percentage -->
 
                         <Label
-                            Text="Day Progress"
-                            FontSize="18"
-                            FontAttributes="Bold" />
+                            Grid.Column="1"
+                            Text="75%"
+                            FontSize="28"
+                            FontAttributes="Bold"
+                            TextColor="White"
+                            VerticalOptions="Center"
+                            Margin="10,0,5,0" />
 
-                        <Label
-                            Text="75% complete"
-                            FontSize="14" />
-
-                    </VerticalStackLayout>
+                    </Grid>
 
                 </Frame>
 
 
-                <!-- ========================= -->
-                <!-- FOUR MINI HEALTH BOXES    -->
-                <!-- ========================= -->
+                <!-- ============================= -->
+                <!-- HEALTH SUMMARY                 -->
+                <!-- ============================= -->
 
                 <Grid
                     ColumnDefinitions="*,*"
@@ -103,25 +140,37 @@
                     <Frame
                         Grid.Row="0"
                         Grid.Column="0"
-                        HeightRequest="120"
-                        CornerRadius="18"
-                        Padding="15">
+                        BackgroundColor="#E6F8F3"
+                        BorderColor="#B8EBDD"
+                        CornerRadius="20"
+                        Padding="17"
+                        HasShadow="False">
 
                         <VerticalStackLayout
                             Spacing="5">
 
                             <Label
-                                Text="Steps"
-                                FontSize="15" />
+                                Text="STEPS"
+                                FontSize="12"
+                                FontAttributes="Bold"
+                                TextColor="#159477" />
 
                             <Label
                                 Text="8,450"
-                                FontSize="24"
-                                FontAttributes="Bold" />
+                                FontSize="25"
+                                FontAttributes="Bold"
+                                TextColor="#17211F" />
 
                             <Label
                                 Text="steps today"
-                                FontSize="12" />
+                                FontSize="12"
+                                TextColor="#6B7A76" />
+
+                            <Label
+                                Text="84% of goal"
+                                FontSize="11"
+                                TextColor="#19B89A"
+                                Margin="0,3,0,0" />
 
                         </VerticalStackLayout>
 
@@ -133,25 +182,37 @@
                     <Frame
                         Grid.Row="0"
                         Grid.Column="1"
-                        HeightRequest="120"
-                        CornerRadius="18"
-                        Padding="15">
+                        BackgroundColor="#EAF7FF"
+                        BorderColor="#B9E5FA"
+                        CornerRadius="20"
+                        Padding="17"
+                        HasShadow="False">
 
                         <VerticalStackLayout
                             Spacing="5">
 
                             <Label
-                                Text="Water"
-                                FontSize="15" />
+                                Text="WATER"
+                                FontSize="12"
+                                FontAttributes="Bold"
+                                TextColor="#249BD0" />
 
                             <Label
                                 Text="1.7 L"
-                                FontSize="24"
-                                FontAttributes="Bold" />
+                                FontSize="25"
+                                FontAttributes="Bold"
+                                TextColor="#17211F" />
 
                             <Label
-                                Text="of 2.0 L"
-                                FontSize="12" />
+                                Text="of 2.0 L goal"
+                                FontSize="12"
+                                TextColor="#6B7A76" />
+
+                            <Label
+                                Text="85% complete"
+                                FontSize="11"
+                                TextColor="#249BD0"
+                                Margin="0,3,0,0" />
 
                         </VerticalStackLayout>
 
@@ -163,55 +224,79 @@
                     <Frame
                         Grid.Row="1"
                         Grid.Column="0"
-                        HeightRequest="120"
-                        CornerRadius="18"
-                        Padding="15">
+                        BackgroundColor="#F1EDFF"
+                        BorderColor="#D9D0FF"
+                        CornerRadius="20"
+                        Padding="17"
+                        HasShadow="False">
 
                         <VerticalStackLayout
                             Spacing="5">
 
                             <Label
-                                Text="Sleep"
-                                FontSize="15" />
+                                Text="SLEEP"
+                                FontSize="12"
+                                FontAttributes="Bold"
+                                TextColor="#7156D9" />
 
                             <Label
                                 Text="7h 24m"
-                                FontSize="24"
-                                FontAttributes="Bold" />
+                                FontSize="25"
+                                FontAttributes="Bold"
+                                TextColor="#17211F" />
 
                             <Label
                                 Text="last night"
-                                FontSize="12" />
+                                FontSize="12"
+                                TextColor="#6B7A76" />
+
+                            <Label
+                                Text="Good sleep"
+                                FontSize="11"
+                                TextColor="#7156D9"
+                                Margin="0,3,0,0" />
 
                         </VerticalStackLayout>
 
                     </Frame>
 
 
-                    <!-- HEART RATE -->
+                    <!-- HEART -->
 
                     <Frame
                         Grid.Row="1"
                         Grid.Column="1"
-                        HeightRequest="120"
-                        CornerRadius="18"
-                        Padding="15">
+                        BackgroundColor="#FFF0F3"
+                        BorderColor="#FFD0DA"
+                        CornerRadius="20"
+                        Padding="17"
+                        HasShadow="False">
 
                         <VerticalStackLayout
                             Spacing="5">
 
                             <Label
-                                Text="Heart Rate"
-                                FontSize="15" />
+                                Text="HEART RATE"
+                                FontSize="12"
+                                FontAttributes="Bold"
+                                TextColor="#E64363" />
 
                             <Label
                                 Text="72 BPM"
-                                FontSize="24"
-                                FontAttributes="Bold" />
+                                FontSize="25"
+                                FontAttributes="Bold"
+                                TextColor="#17211F" />
 
                             <Label
                                 Text="current"
-                                FontSize="12" />
+                                FontSize="12"
+                                TextColor="#6B7A76" />
+
+                            <Label
+                                Text="Normal"
+                                FontSize="11"
+                                TextColor="#E64363"
+                                Margin="0,3,0,0" />
 
                         </VerticalStackLayout>
 
@@ -220,34 +305,62 @@
                 </Grid>
 
 
-                <!-- ========================= -->
-                <!-- STEPS LINE CHART           -->
-                <!-- ========================= -->
+                <!-- ============================= -->
+                <!-- STEPS CHART                    -->
+                <!-- ============================= -->
 
                 <Frame
-                    HeightRequest="235"
-                    CornerRadius="18"
-                    Padding="12">
+                    BackgroundColor="White"
+                    BorderColor="#E4ECE9"
+                    CornerRadius="22"
+                    Padding="16"
+                    HasShadow="False">
 
                     <VerticalStackLayout
-                        Spacing="5">
+                        Spacing="4">
 
-                        <Label
-                            Text="Steps"
-                            FontSize="18"
-                            FontAttributes="Bold" />
 
-                        <Label
-                            Text="Monday - Sunday"
-                            FontSize="12" />
+                        <!-- Chart header -->
+
+                        <Grid
+                            ColumnDefinitions="*,Auto">
+
+                            <VerticalStackLayout
+                                Grid.Column="0"
+                                Spacing="2">
+
+                                <Label
+                                    Text="Steps"
+                                    FontSize="19"
+                                    FontAttributes="Bold"
+                                    TextColor="#17211F" />
+
+                                <Label
+                                    Text="Your activity this week"
+                                    FontSize="12"
+                                    TextColor="#7C8A86" />
+
+                            </VerticalStackLayout>
+
+
+                            <Label
+                                Grid.Column="1"
+                                Text="52,430"
+                                FontSize="17"
+                                FontAttributes="Bold"
+                                TextColor="#19B89A"
+                                VerticalOptions="Center" />
+
+                        </Grid>
 
 
                         <!-- GRAPH -->
 
                         <GraphicsView
                             x:Name="StepsChart"
-                            HeightRequest="145"
-                            HorizontalOptions="Fill" />
+                            HeightRequest="155"
+                            HorizontalOptions="Fill"
+                            Margin="0,8,0,0" />
 
 
                         <!-- DAYS -->
@@ -260,43 +373,50 @@
                                 Grid.Column="0"
                                 Text="Mon"
                                 HorizontalTextAlignment="Center"
-                                FontSize="10" />
+                                FontSize="10"
+                                TextColor="#7C8A86" />
 
                             <Label
                                 Grid.Column="1"
                                 Text="Tue"
                                 HorizontalTextAlignment="Center"
-                                FontSize="10" />
+                                FontSize="10"
+                                TextColor="#7C8A86" />
 
                             <Label
                                 Grid.Column="2"
                                 Text="Wed"
                                 HorizontalTextAlignment="Center"
-                                FontSize="10" />
+                                FontSize="10"
+                                TextColor="#7C8A86" />
 
                             <Label
                                 Grid.Column="3"
                                 Text="Thu"
                                 HorizontalTextAlignment="Center"
-                                FontSize="10" />
+                                FontSize="10"
+                                TextColor="#7C8A86" />
 
                             <Label
                                 Grid.Column="4"
                                 Text="Fri"
                                 HorizontalTextAlignment="Center"
-                                FontSize="10" />
+                                FontSize="10"
+                                TextColor="#7C8A86" />
 
                             <Label
                                 Grid.Column="5"
                                 Text="Sat"
                                 HorizontalTextAlignment="Center"
-                                FontSize="10" />
+                                FontSize="10"
+                                TextColor="#7C8A86" />
 
                             <Label
                                 Grid.Column="6"
                                 Text="Sun"
                                 HorizontalTextAlignment="Center"
-                                FontSize="10" />
+                                FontSize="10"
+                                TextColor="#7C8A86" />
 
                         </Grid>
 
@@ -304,60 +424,139 @@
 
                 </Frame>
 
+
+                <!-- ============================= -->
+                <!-- MOTIVATION CARD                -->
+                <!-- ============================= -->
+
+                <Frame
+                    BackgroundColor="#17211F"
+                    BorderColor="#17211F"
+                    CornerRadius="22"
+                    Padding="20"
+                    HasShadow="False">
+
+                    <VerticalStackLayout
+                        Spacing="6">
+
+                        <Label
+                            Text="Keep going! 💪"
+                            FontSize="20"
+                            FontAttributes="Bold"
+                            TextColor="White" />
+
+                        <Label
+                            Text="You're only 1,550 steps away from your daily goal."
+                            FontSize="13"
+                            TextColor="#C7D3CF" />
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+
+                <!-- Bottom spacing -->
+
+                <BoxView
+                    HeightRequest="5"
+                    Color="Transparent" />
+
             </VerticalStackLayout>
 
         </ScrollView>
 
 
-        <!-- ========================= -->
-        <!-- BOTTOM NAVIGATION          -->
-        <!-- ========================= -->
+        <!-- ================================= -->
+        <!-- BOTTOM NAVIGATION                 -->
+        <!-- ================================= -->
 
-        <Grid
-            Grid.Row="1"
-            HeightRequest="75"
-            ColumnDefinitions="*,*,*,*,*"
-            Padding="5">
+        <!-- ================================= -->
+        <!-- BOTTOM NAVIGATION                 -->
+        <!-- ================================= -->
 
+        <Border
+    Grid.Row="1"
+    BackgroundColor="White"
+    Stroke="#E3EBE8"
+    StrokeThickness="1"
+    Padding="5,6,5,6">
 
-            <!-- HOME -->
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="22" />
+            </Border.StrokeShape>
 
-            <Button
-                Grid.Column="0"
-                Clicked="OnHomeClicked"
-                ImageSource="home.png" />
-            
-            <!-- EXERCISE -->
+            <Grid
+        ColumnDefinitions="*,*,*,*,*"
+        ColumnSpacing="2">
 
-            <Button
-                Grid.Column="1"
-                Clicked="OnExerciseClicked"
-                ImageSource="exercise.png" />
+                <!-- HOME -->
 
+                <Button
+            Grid.Column="0"
+            Text="⌂&#10;Home"
+            FontSize="12"
+            FontAttributes="Bold"
+            BackgroundColor="Transparent"
+            TextColor="#19B89A"
+            Padding="0"
+            HeightRequest="58"
+            Clicked="OnHomeClicked" />
 
-            <!-- PROGRESS -->
+                <!-- EXERCISE -->
 
-            <Button
-                Grid.Column="2"
-                Clicked="OnProgressClicked"
-                ImageSource="progress.png" />
+                <Button
+            Grid.Column="1"
+            Text="Exercise"
+            FontSize="12"
+            FontAttributes="Bold"
+            BackgroundColor="Transparent"
+            TextColor="#6B7A76"
+            Padding="0"
+            HeightRequest="58"
+            Clicked="OnExerciseClicked" />
 
+                <!-- PROGRESS -->
 
-            <!-- SLEEP -->
+                <Button
+            Grid.Column="2"
+            Text="Progress"
+            FontSize="12"
+            FontAttributes="Bold"
+            BackgroundColor="Transparent"
+            TextColor="#6B7A76"
+            Padding="0"
+            HeightRequest="58"
+            Clicked="OnProgressClicked" />
 
-            <Button
-                Grid.Column="3"
-                Clicked="OnSleepClicked"
-                ImageSource="sleep.png" />
-            
-            <Button
-                Grid.Column="4"
-                Clicked="OnHeartClicked"
-                ImageSource="heart.png" />
+                <!-- SLEEP -->
 
+                <Button
+            Grid.Column="3"
+            Text="Sleep"
+            FontSize="12"
+            FontAttributes="Bold"
+            BackgroundColor="Transparent"
+            TextColor="#6B7A76"
+            Padding="0"
+            HeightRequest="58"
+            Clicked="OnSleepClicked" />
 
+                <!-- HEART -->
 
-        </Grid>
+                <Button
+            Grid.Column="4"
+            Text="♥&#10;Heart"
+            FontSize="12"
+            FontAttributes="Bold"
+            BackgroundColor="Transparent"
+            TextColor="#FF4D6D"
+            Padding="0"
+            HeightRequest="58"
+            Clicked="OnHeartClicked" />
+
+            </Grid>
+
+        </Border>
 
     </Grid>
 
