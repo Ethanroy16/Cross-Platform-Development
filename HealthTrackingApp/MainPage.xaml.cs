@@ -1,50 +1,10 @@
-﻿namespace HealthTrackingApp;
-
-public partial class MainPage : ContentPage
+﻿namespace HealthTrackingApp
 {
-    public MainPage()
+    public partial class MainPage : ContentPage
     {
-        InitializeComponent();
-
-        StepsChart.Drawable = new StepsChartDrawable();
-    }
-
-
-    private void OnHomeClicked(object sender, EventArgs e)
-    {
-        // Already on Home
-    }
-
-
-    private async void OnProgressClicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new View.Progress());
-    }
-
-
-    private async void OnSettingsClicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new View.Settings());
-    }
-
-
-    private async void OnAboutClicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new View.About());
-    }
-}
-
-
-// Steps line chart
-
-public class StepsChartDrawable : IDrawable
-{
-    public void Draw(ICanvas canvas, RectF dirtyRect)
-    {
-        // Sample data for Monday - Sunday
-
-        float[] steps =
+        public MainPage()
         {
+<<<<<<< HEAD
             6200,
             8450,
             7100,
@@ -109,45 +69,203 @@ public class StepsChartDrawable : IDrawable
 
 
             points[i] = new PointF(x, y);
+=======
+            InitializeComponent();
+        }
+
+        // =========================================
+        // BOTTOM NAVIGATION
+        // =========================================
+
+        private async void OnHomeClicked(object? sender, EventArgs e)
+        {
+            await Navigation.PopToRootAsync();
+        }
+
+        private async void OnExerciseClicked(object? sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new View.Exercise());
+        }
+
+        private async void OnProgressClicked(object? sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new View.Progress());
+        }
+
+        private async void OnSleepClicked(object? sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new View.Sleep());
+        }
+
+        private async void OnHeartClicked(object? sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new View.Heart());
+        }
+
+        private async void OnProfileClicked(object? sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new View.profile());
         }
 
 
-        // Draw the line
+        // =========================================
+        // DASHBOARD CARDS
+        // =========================================
 
-        for (int i = 0; i < points.Length - 1; i++)
+        private async void OnStepsCardTapped(object? sender, TappedEventArgs e)
         {
-            canvas.DrawLine(
-                points[i],
-                points[i + 1]);
+            await Navigation.PushAsync(new View.Progress());
         }
 
-
-        // Draw dots and numbers
-
-        for (int i = 0; i < points.Length; i++)
+        private async void OnWaterCardTapped(object? sender, TappedEventArgs e)
         {
-            // Draw dot
+            // There is currently no separate Water page,
+            // so send the user to Progress for now.
+            await Navigation.PushAsync(new View.Progress());
+        }
 
-            canvas.FillCircle(
-                points[i].X,
-                points[i].Y,
-                5);
+        private async void OnSleepCardTapped(object? sender, TappedEventArgs e)
+        {
+            await Navigation.PushAsync(new View.Sleep());
+        }
+
+        private async void OnHeartCardTapped(object? sender, TappedEventArgs e)
+        {
+            await Navigation.PushAsync(new View.Heart());
+        }
+    }
 
 
-            // Draw number above dot
+    // =============================================
+    // STEPS CHART
+    // =============================================
 
-            string stepText =
-                steps[i].ToString("N0");
+    public class StepsChartDrawable : IDrawable
+    {
+        private readonly float[] steps =
+        {
+            6200,
+            8100,
+            7350,
+            9200,
+            8450,
+            10200,
+            7930
+        };
 
+        public void Draw(ICanvas canvas, RectF dirtyRect)
+        {
+            float width = dirtyRect.Width;
+            float height = dirtyRect.Height;
 
-            canvas.DrawString(
-                stepText,
-                points[i].X - 30,
-                points[i].Y - 25,
-                60,
-                18,
-                HorizontalAlignment.Center,
-                VerticalAlignment.Center);
+            if (width <= 0 || height <= 0)
+                return;
+
+            float leftPadding = 25;
+            float rightPadding = 15;
+            float topPadding = 25;
+            float bottomPadding = 20;
+
+            float chartWidth = width - leftPadding - rightPadding;
+            float chartHeight = height - topPadding - bottomPadding;
+
+            float minValue = 5000;
+            float maxValue = 11000;
+
+            // -----------------------------------------
+            // Horizontal guide lines
+            // -----------------------------------------
+
+            canvas.StrokeSize = 1;
+            canvas.StrokeColor = Color.FromArgb("#E7EEEB");
+
+            for (int i = 0; i < 4; i++)
+            {
+                float y = topPadding + (chartHeight / 3 * i);
+
+                canvas.DrawLine(
+                    leftPadding,
+                    y,
+                    width - rightPadding,
+                    y);
+            }
+
+            // -----------------------------------------
+            // Calculate points
+            // -----------------------------------------
+
+            PointF[] points = new PointF[steps.Length];
+
+            for (int i = 0; i < steps.Length; i++)
+            {
+                float x = leftPadding +
+                          (chartWidth / (steps.Length - 1)) * i;
+
+                float percentage =
+                    (steps[i] - minValue) /
+                    (maxValue - minValue);
+
+                float y =
+                    topPadding +
+                    chartHeight -
+                    (percentage * chartHeight);
+
+                points[i] = new PointF(x, y);
+            }
+
+            // -----------------------------------------
+            // Draw connecting line
+            // -----------------------------------------
+
+            canvas.StrokeColor = Color.FromArgb("#19B89A");
+            canvas.StrokeSize = 3;
+
+            for (int i = 0; i < points.Length - 1; i++)
+            {
+                canvas.DrawLine(
+                    points[i],
+                    points[i + 1]);
+            }
+
+            // -----------------------------------------
+            // Draw points and values
+            // -----------------------------------------
+
+            for (int i = 0; i < points.Length; i++)
+            {
+                PointF point = points[i];
+
+                // Outer circle
+                canvas.FillColor = Color.FromArgb("#19B89A");
+
+                canvas.FillCircle(
+                    point.X,
+                    point.Y,
+                    6);
+
+                // Inner circle
+                canvas.FillColor = Colors.White;
+
+                canvas.FillCircle(
+                    point.X,
+                    point.Y,
+                    2.5f);
+
+                // Step value
+                canvas.FontColor = Color.FromArgb("#17211F");
+                canvas.FontSize = 10;
+
+                string value = steps[i].ToString("N0");
+
+                canvas.DrawString(
+                    value,
+                    point.X - 20,
+                    point.Y - 25,
+                    40,
+                    18,
+                    HorizontalAlignment.Center,
+                    VerticalAlignment.Center);
+            }
         }
     }
 }

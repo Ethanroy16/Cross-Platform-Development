@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-namespace HealthTrackingApp
+﻿namespace HealthTrackingApp
 {
     public partial class App : Application
     {
@@ -11,7 +9,9 @@ namespace HealthTrackingApp
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            return new Window(new AppShell());
+            return new Window(
+                new NavigationPage(new MainPage())
+            );
         }
     }
 }

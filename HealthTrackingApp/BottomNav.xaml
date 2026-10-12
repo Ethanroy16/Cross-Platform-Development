@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="HealthTrackingApp.BottomNav">
+
+    <Border
+        BackgroundColor="White"
+        Stroke="#DCE7E3"
+        StrokeThickness="1"
+        Padding="8">
+
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="24" />
+        </Border.StrokeShape>
+
+        <Grid
+            ColumnDefinitions="*,*,*,*,*"
+            ColumnSpacing="8">
+
+            <!-- HOME -->
+
+            <Border
+                Grid.Column="0"
+                BackgroundColor="#E6F8F3"
+                StrokeThickness="0"
+                Padding="4">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="14" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Spacing="2">
+
+                    <Image
+                        Source="home.png"
+                        WidthRequest="28"
+                        HeightRequest="28"
+                        Aspect="AspectFit" />
+
+                    <Label
+                        Text="Home"
+                        FontSize="10"
+                        FontAttributes="Bold"
+                        TextColor="#19B89A"
+                        HorizontalTextAlignment="Center" />
+
+                </VerticalStackLayout>
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnHomeClicked" />
+                </Border.GestureRecognizers>
+
+            </Border>
+
+
+            <!-- EXERCISE -->
+
+            <Border
+                Grid.Column="1"
+                BackgroundColor="#FFF1E7"
+                StrokeThickness="0"
+                Padding="4">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="14" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Spacing="2">
+
+                    <Image
+                        Source="exercise.png"
+                        WidthRequest="28"
+                        HeightRequest="28"
+                        Aspect="AspectFit" />
+
+                    <Label
+                        Text="Exercise"
+                        FontSize="10"
+                        FontAttributes="Bold"
+                        TextColor="#E66F22"
+                        HorizontalTextAlignment="Center" />
+
+                </VerticalStackLayout>
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnExerciseClicked" />
+                </Border.GestureRecognizers>
+
+            </Border>
+
+
+            <!-- PROGRESS -->
+
+            <Border
+                Grid.Column="2"
+                BackgroundColor="#EAF2FF"
+                StrokeThickness="0"
+                Padding="4">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="14" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Spacing="2">
+
+                    <Image
+                        Source="progress.png"
+                        WidthRequest="28"
+                        HeightRequest="28"
+                        Aspect="AspectFit" />
+
+                    <Label
+                        Text="Progress"
+                        FontSize="10"
+                        FontAttributes="Bold"
+                        TextColor="#3B82F6"
+                        HorizontalTextAlignment="Center" />
+
+                </VerticalStackLayout>
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnProgressClicked" />
+                </Border.GestureRecognizers>
+
+            </Border>
+
+
+            <!-- SLEEP -->
+
+            <Border
+                Grid.Column="3"
+                BackgroundColor="#F1EDFF"
+                StrokeThickness="0"
+                Padding="4">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="14" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Spacing="2">
+
+                    <Image
+                        Source="sleep.png"
+                        WidthRequest="28"
+                        HeightRequest="28"
+                        Aspect="AspectFit" />
+
+                    <Label
+                        Text="Sleep"
+                        FontSize="10"
+                        FontAttributes="Bold"
+                        TextColor="#7C5CFC"
+                        HorizontalTextAlignment="Center" />
+
+                </VerticalStackLayout>
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSleepClicked" />
+                </Border.GestureRecognizers>
+
+            </Border>
+
+
+            <!-- HEART -->
+
+            <Border
+                Grid.Column="4"
+                BackgroundColor="#FFF0F3"
+                StrokeThickness="0"
+                Padding="4">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="14" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Spacing="2">
+
+                    <Image
+                        Source="heart.png"
+                        WidthRequest="28"
+                        HeightRequest="28"
+                        Aspect="AspectFit" />
+
+                    <Label
+                        Text="Heart"
+                        FontSize="10"
+                        FontAttributes="Bold"
+                        TextColor="#FF4D6D"
+                        HorizontalTextAlignment="Center" />
+
+                </VerticalStackLayout>
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnHeartClicked" />
+                </Border.GestureRecognizers>
+
+            </Border>
+
+        </Grid>
+
+    </Border>
+
+</ContentView>
+    
+   
