@@ -16,7 +16,7 @@
         </Border.StrokeShape>
 
         <Grid
-            ColumnDefinitions="*,*,*,*,*"
+            ColumnDefinitions="*,*,*,*,*,*"
             ColumnSpacing="8">
 
             <!-- HOME -->
@@ -209,6 +209,38 @@
 
                 <Border.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnHeartClicked" />
+                </Border.GestureRecognizers>
+
+            </Border>
+            
+            <!-- Settings -->
+
+            <Border
+                Grid.Column="5"
+                BackgroundColor="#E6F8F3"
+                StrokeThickness="0"
+                Padding="4">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="14" />
+                </Border.StrokeShape>
+                <VerticalStackLayout
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Spacing="2">
+                    <Image
+                        Source="settings.png"
+                        WidthRequest="28"
+                        HeightRequest="28"
+                        Aspect="AspectFit" />
+                    <Label
+                        Text="Settings"
+                        FontSize="10"
+                        FontAttributes="Bold"
+                        TextColor="#19B89A"
+                        HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSettingsClicked" />
                 </Border.GestureRecognizers>
 
             </Border>

@@ -31,4 +31,9 @@ public partial class BottomNav : ContentView
     {
         await Navigation.PushAsync(new View.Heart());
     }
+
+    private async void OnSettingsClicked(object sender, TappedEventArgs e)
+    {
+        await Navigation.PushAsync(new View.Settings());
+    }
 }

@@ -7,6 +7,8 @@ public class Heart : ContentPage
 {
     public Heart()
     {
+        // Pseudocode: Build the heart monitoring page and display recent readings.
+
         Title = "Heart Monitoring";
 
         Grid mainGrid = new Grid
@@ -109,6 +111,8 @@ public class Heart : ContentPage
 
         recordButton.Clicked += async (sender, e) =>
         {
+            // Pseudocode: Show a confirmation that the heart-rate reading was recorded.
+
             await DisplayAlert(
                 "Heart Rate",
                 "Heart rate reading recorded.",
@@ -138,6 +142,8 @@ public class Heart : ContentPage
 
     private Border CreateReading(string day, string bpm)
     {
+        // Pseudocode: Create a styled heart-rate reading card.
+
         return new Border
         {
             BackgroundColor = Colors.White,

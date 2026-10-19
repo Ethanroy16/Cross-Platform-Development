@@ -10,18 +10,8 @@
 
     <Grid RowDefinitions="*,Auto">
 
-<<<<<<< HEAD
-<<<<<<< HEAD
         <!-- MAIN DASHBOARD             -->
-=======
 
-        <!-- ================================= -->
-        <!-- MAIN DASHBOARD                    -->
-        <!-- ================================= -->
->>>>>>> cad4f5f (Some more UI & CSS changes)
-
-=======
->>>>>>> 86340a3 (Added Navigation/CSS & Wireframing)
         <ScrollView Grid.Row="0">
 
             <VerticalStackLayout
@@ -37,7 +27,7 @@
                         Spacing="3">
 
                         <Label
-                            Text="Good morning 👋"
+                            Text="Good morning User"
                             FontSize="15"
                             TextColor="#5F6E69" />
 
@@ -132,17 +122,9 @@
 
                 </Frame>
 
-<<<<<<< HEAD
-                <!-- FOUR MINI HEALTH BOXES    -->
-=======
+                <!-- FOUR MINI HEALTH BOXES -->
 
-<<<<<<< HEAD
-
-                <!-- HEALTH SUMMARY                 -->
->>>>>>> cad4f5f (Some more UI & CSS changes)
-=======
                 <!-- HEALTH SUMMARY -->
->>>>>>> 86340a3 (Added Navigation/CSS & Wireframing)
 
                 <Grid
                     ColumnDefinitions="*,*"
@@ -331,18 +313,7 @@
 
                 </Grid>
 
-<<<<<<< HEAD
                 <!-- STEPS LINE CHART           -->
-=======
-
-<<<<<<< HEAD
-                <!-- ============================= -->
-                <!-- STEPS CHART                    -->
-                <!-- ============================= -->
->>>>>>> cad4f5f (Some more UI & CSS changes)
-=======
-                <!-- STEPS CHART -->
->>>>>>> 86340a3 (Added Navigation/CSS & Wireframing)
 
                 <Frame
                     BackgroundColor="White"
@@ -467,7 +438,7 @@
                     <VerticalStackLayout Spacing="6">
 
                         <Label
-                            Text="Keep going! 💪"
+                            Text="Keep going!"
                             FontSize="20"
                             FontAttributes="Bold"
                             TextColor="White" />

@@ -7,6 +7,8 @@ public class Sleep : ContentPage
 {
     public Sleep()
     {
+        // Pseudocode: Build the sleep dashboard and display recent sleep information.
+
         Title = "Sleep";
 
         Grid mainGrid = new Grid
@@ -132,6 +134,8 @@ public class Sleep : ContentPage
 
         recordButton.Clicked += async (sender, e) =>
         {
+            // Pseudocode: Open the sleep-record page.
+
             await Navigation.PushAsync(new RecordSleep());
         };
 
@@ -161,6 +165,8 @@ public class Sleep : ContentPage
 
     private Border CreateSleepRecord(string day, string duration)
     {
+        // Pseudocode: Create a styled sleep record card.
+
         return new Border
         {
             BackgroundColor = Colors.White,

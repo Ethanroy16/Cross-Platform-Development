@@ -6,6 +6,8 @@ public class RecordSleep : ContentPage
 {
     public RecordSleep()
     {
+        // Pseudocode: Build the sleep-record form and display the page.
+
         Title = "Record Sleep";
 
         Grid mainGrid = new Grid
@@ -132,6 +134,8 @@ public class RecordSleep : ContentPage
 
         interruptionsStepper.ValueChanged += (sender, e) =>
         {
+            // Pseudocode: Update the number of night-time awakenings.
+
             interruptionsValue.Text = $"{(int)e.NewValue} times";
         };
 
@@ -197,6 +201,8 @@ public class RecordSleep : ContentPage
 
         saveButton.Clicked += async (sender, e) =>
         {
+            // Pseudocode: Confirm the sleep record and return to the previous page.
+
             await DisplayAlert(
                 "Sleep Saved",
                 "Your sleep record has been saved successfully.",

@@ -4,6 +4,8 @@ public class editProfile : ContentPage
 {
     public editProfile()
     {
+        // Pseudocode: Build the edit-profile form and display the page.
+
         Title = "Edit Profile";
 
         ScrollView scrollView = new ScrollView();
@@ -14,10 +16,6 @@ public class editProfile : ContentPage
             Spacing = 18,
             BackgroundColor = Color.FromArgb("#E6F7F5")
         };
-
-        // =========================================
-        // TITLE
-        // =========================================
 
         Label title = new Label
         {
@@ -34,10 +32,6 @@ public class editProfile : ContentPage
             TextColor = Color.FromArgb("#52615D")
         };
 
-        // =========================================
-        // NAME
-        // =========================================
-
         Label nameLabel = CreateLabel("Full Name");
 
         Entry nameEntry = new Entry
@@ -48,10 +42,6 @@ public class editProfile : ContentPage
             TextColor = Color.FromArgb("#17211F"),
             PlaceholderColor = Color.FromArgb("#687873")
         };
-
-        // =========================================
-        // EMAIL
-        // =========================================
 
         Label emailLabel = CreateLabel("Email Address");
 
@@ -65,10 +55,6 @@ public class editProfile : ContentPage
             PlaceholderColor = Color.FromArgb("#687873")
         };
 
-        // =========================================
-        // AGE
-        // =========================================
-
         Label ageLabel = CreateLabel("Age");
 
         Entry ageEntry = new Entry
@@ -80,10 +66,6 @@ public class editProfile : ContentPage
             TextColor = Color.FromArgb("#17211F"),
             PlaceholderColor = Color.FromArgb("#687873")
         };
-
-        // =========================================
-        // HEIGHT
-        // =========================================
 
         Label heightLabel = CreateLabel("Height");
 
@@ -97,10 +79,6 @@ public class editProfile : ContentPage
             PlaceholderColor = Color.FromArgb("#687873")
         };
 
-        // =========================================
-        // WEIGHT
-        // =========================================
-
         Label weightLabel = CreateLabel("Weight");
 
         Entry weightEntry = new Entry
@@ -112,10 +90,6 @@ public class editProfile : ContentPage
             TextColor = Color.FromArgb("#17211F"),
             PlaceholderColor = Color.FromArgb("#687873")
         };
-
-        // =========================================
-        // ACTIVITY LEVEL
-        // =========================================
 
         Label activityLabel = CreateLabel("Activity Level");
 
@@ -133,10 +107,6 @@ public class editProfile : ContentPage
         activityPicker.Items.Add("Very active");
         activityPicker.Items.Add("Extremely active");
 
-        // =========================================
-        // DAILY STEP GOAL
-        // =========================================
-
         Label stepsLabel = CreateLabel("Daily Step Goal");
 
         Entry stepsEntry = new Entry
@@ -148,10 +118,6 @@ public class editProfile : ContentPage
             TextColor = Color.FromArgb("#17211F"),
             PlaceholderColor = Color.FromArgb("#687873")
         };
-
-        // =========================================
-        // SAVE BUTTON
-        // =========================================
 
         Button saveButton = new Button
         {
@@ -167,6 +133,8 @@ public class editProfile : ContentPage
 
         saveButton.Clicked += async (sender, e) =>
         {
+            // Pseudocode: Show a confirmation and return to the previous page.
+
             await DisplayAlert(
                 "Profile Updated",
                 "Your profile has been updated successfully.",
@@ -174,10 +142,6 @@ public class editProfile : ContentPage
 
             await Navigation.PopAsync();
         };
-
-        // =========================================
-        // CANCEL BUTTON
-        // =========================================
 
         Button cancelButton = new Button
         {
@@ -194,13 +158,12 @@ public class editProfile : ContentPage
 
         cancelButton.Clicked += async (sender, e) =>
         {
+            // Pseudocode: Cancel editing and return to the previous page.
+
             await Navigation.PopAsync();
         };
 
-        // =========================================
-        // ADD EVERYTHING
-        // =========================================
-
+   
         content.Children.Add(title);
         content.Children.Add(subtitle);
 
@@ -237,6 +200,8 @@ public class editProfile : ContentPage
 
     private Label CreateLabel(string text)
     {
+        // Pseudocode: Create a consistently styled profile label.
+
         return new Label
         {
             Text = text,

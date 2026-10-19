@@ -7,6 +7,8 @@ public class profile : ContentPage
 {
     public profile()
     {
+        // Pseudocode: Build the profile page and provide edit and sign-out actions.
+
         Title = "Profile";
 
         Grid mainGrid = new Grid
@@ -103,7 +105,40 @@ public class profile : ContentPage
 
         editButton.Clicked += async (sender, e) =>
         {
+            // Pseudocode: Open the edit-profile page.
+
             await Navigation.PushAsync(new editProfile(), true);
+        };
+
+        Button signOutButton = new Button
+        {
+            Text = "Sign Out",
+            FontSize = 16,
+            FontAttributes = FontAttributes.Bold,
+            BackgroundColor = Colors.White,
+            TextColor = Color.FromArgb("#FF4D6D"),
+            BorderColor = Color.FromArgb("#FF4D6D"),
+            BorderWidth = 1,
+            CornerRadius = 12,
+            HeightRequest = 50
+        };
+
+        signOutButton.Clicked += async (sender, e) =>
+        {
+            // Pseudocode: Confirm sign-out, clear the session, and open login.
+
+            bool answer = await DisplayAlert(
+                "Sign Out",
+                "Are you sure you want to sign out?",
+                "Yes",
+                "No");
+
+            if (!answer)
+                return;
+
+            UserSession.IsLoggedIn = false;
+
+            await Navigation.PushAsync(new Login());
         };
 
         content.Children.Add(title);
@@ -114,12 +149,12 @@ public class profile : ContentPage
         content.Children.Add(heightCard);
         content.Children.Add(weightCard);
         content.Children.Add(editButton);
+        content.Children.Add(signOutButton);
 
         scrollView.Content = content;
 
         mainGrid.Add(scrollView, 0, 0);
 
-        // One reusable navigation bar
         mainGrid.Add(new BottomNav(), 0, 1);
 
         Content = mainGrid;
@@ -129,6 +164,8 @@ public class profile : ContentPage
 
     private Border CreateInfoCard(string title, string value)
     {
+        // Pseudocode: Create a styled profile information card.
+
         VerticalStackLayout layout = new VerticalStackLayout
         {
             Spacing = 4

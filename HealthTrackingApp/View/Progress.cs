@@ -7,6 +7,8 @@ public class Progress : ContentPage
 {
     public Progress()
     {
+        // Pseudocode: Build the progress page, show weekly statistics, and add navigation.
+
         Title = "Progress";
 
         Grid mainGrid = new Grid
@@ -183,6 +185,8 @@ public class Progress : ContentPage
 
         profileButton.Clicked += async (sender, e) =>
         {
+            // Pseudocode: Open the profile page.
+
             await Navigation.PushAsync(new profile());
         };
 

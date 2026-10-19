@@ -7,6 +7,8 @@ public class Exercise : ContentPage
 {
     public Exercise()
     {
+        // Pseudocode: Build the exercise form, add navigation, and display the page.
+
         Title = "Exercise";
 
         Grid mainGrid = new Grid
@@ -106,6 +108,8 @@ public class Exercise : ContentPage
 
         saveButton.Clicked += async (sender, e) =>
         {
+            // Pseudocode: Show a confirmation that the exercise was recorded.
+
             await DisplayAlert(
                 "Exercise Saved",
                 "Your exercise has been recorded successfully.",
