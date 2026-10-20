@@ -150,7 +150,7 @@
                         <VerticalStackLayout Spacing="5">
 
                             <Label
-                                Text="STEPS"
+                                Text="🚶‍♂️‍➡️ STEPS"
                                 FontSize="12"
                                 FontAttributes="Bold"
                                 TextColor="#159477" />
@@ -195,7 +195,7 @@
                         <VerticalStackLayout Spacing="5">
 
                             <Label
-                                Text="WATER"
+                                Text="💧 WATER"
                                 FontSize="12"
                                 FontAttributes="Bold"
                                 TextColor="#1688BC" />
@@ -240,7 +240,7 @@
                         <VerticalStackLayout Spacing="5">
 
                             <Label
-                                Text="SLEEP"
+                                Text="💤🛌 SLEEP"
                                 FontSize="12"
                                 FontAttributes="Bold"
                                 TextColor="#684FE0" />
@@ -285,7 +285,7 @@
                         <VerticalStackLayout Spacing="5">
 
                             <Label
-                                Text="HEART RATE"
+                                Text="❤️ HEART RATE"
                                 FontSize="12"
                                 FontAttributes="Bold"
                                 TextColor="#D93658" />
@@ -331,7 +331,7 @@
                                 Spacing="2">
 
                                 <Label
-                                    Text="Steps"
+                                    Text="🚶 Steps"
                                     FontSize="19"
                                     FontAttributes="Bold"
                                     TextColor="#17211F" />
