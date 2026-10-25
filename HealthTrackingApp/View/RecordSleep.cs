@@ -100,7 +100,8 @@ public class RecordSleep : ContentPage
         {
             Title = "Select sleep quality",
             BackgroundColor = Colors.White,
-            TextColor = Color.FromArgb("#17211F")
+            TextColor = Color.FromArgb("#17211F"),
+            TitleColor = Color.FromArgb("#687873")
         };
 
         qualityPicker.Items.Add("Excellent");
@@ -164,7 +165,8 @@ public class RecordSleep : ContentPage
         {
             Title = "Select amount",
             BackgroundColor = Colors.White,
-            TextColor = Color.FromArgb("#17211F")
+            TextColor = Color.FromArgb("#17211F"),
+            TitleColor = Color.FromArgb("#687873")
         };
 
         caffeinePicker.Items.Add("None");
@@ -185,7 +187,8 @@ public class RecordSleep : ContentPage
             Placeholder = "How did you sleep? Add any notes here...",
             HeightRequest = 110,
             BackgroundColor = Colors.White,
-            TextColor = Color.FromArgb("#17211F")
+            TextColor = Color.FromArgb("#17211F"),
+            PlaceholderColor = Color.FromArgb("#687873")
         };
 
         Button saveButton = new Button

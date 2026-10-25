@@ -55,7 +55,9 @@ public class Exercise : ContentPage
         Picker exercisePicker = new Picker
         {
             Title = "Choose exercise",
-            BackgroundColor = Colors.White
+            BackgroundColor = Colors.White,
+            TextColor = Color.FromArgb("#17211F"),
+            TitleColor = Color.FromArgb("#687873")
         };
 
         exercisePicker.Items.Add("Walking");
@@ -77,7 +79,9 @@ public class Exercise : ContentPage
         {
             Placeholder = "Enter minutes",
             Keyboard = Keyboard.Numeric,
-            BackgroundColor = Colors.White
+            BackgroundColor = Colors.White,
+            TextColor = Color.FromArgb("#17211F"),
+            PlaceholderColor = Color.FromArgb("#687873")
         };
 
         Label notesLabel = new Label
@@ -92,7 +96,9 @@ public class Exercise : ContentPage
         {
             Placeholder = "Add any notes about your exercise...",
             HeightRequest = 100,
-            BackgroundColor = Colors.White
+            BackgroundColor = Colors.White,
+            TextColor = Color.FromArgb("#17211F"),
+            PlaceholderColor = Color.FromArgb("#687873")
         };
 
         Button saveButton = new Button

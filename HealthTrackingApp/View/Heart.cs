@@ -111,12 +111,7 @@ public class Heart : ContentPage
 
         recordButton.Clicked += async (sender, e) =>
         {
-            // Pseudocode: Show a confirmation that the heart-rate reading was recorded.
-
-            await DisplayAlert(
-                "Heart Rate",
-                "Heart rate reading recorded.",
-                "OK");
+            await Navigation.PushAsync(new RecordHeartRate());
         };
 
         content.Children.Add(title);

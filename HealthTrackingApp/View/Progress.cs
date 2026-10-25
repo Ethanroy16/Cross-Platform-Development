@@ -172,22 +172,36 @@ public class Progress : ContentPage
             TextColor = Color.FromArgb("#3B82F6")
         };
 
-        Button profileButton = new Button
+        Button waterButton = new Button
         {
-            Text = "View Profile",
+            Text = "Record Water Intake",
             FontSize = 16,
             FontAttributes = FontAttributes.Bold,
-            BackgroundColor = Color.FromArgb("#3B82F6"),
+            BackgroundColor = Color.FromArgb("#1688BC"),
             TextColor = Colors.White,
             CornerRadius = 12,
             HeightRequest = 50
         };
 
-        profileButton.Clicked += async (sender, e) =>
+        waterButton.Clicked += async (sender, e) =>
         {
-            // Pseudocode: Open the profile page.
+            await Navigation.PushAsync(new RecordWater());
+        };
 
-            await Navigation.PushAsync(new profile());
+        Button stepsButton = new Button
+        {
+            Text = "Record Steps",
+            FontSize = 16,
+            FontAttributes = FontAttributes.Bold,
+            BackgroundColor = Color.FromArgb("#159477"),
+            TextColor = Colors.White,
+            CornerRadius = 12,
+            HeightRequest = 50
+        };
+
+        stepsButton.Clicked += async (sender, e) =>
+        {
+            await Navigation.PushAsync(new RecordSteps());
         };
 
         content.Children.Add(title);
@@ -197,7 +211,8 @@ public class Progress : ContentPage
         content.Children.Add(weeklyText);
         content.Children.Add(progressBar);
         content.Children.Add(goalLabel);
-        content.Children.Add(profileButton);
+        content.Children.Add(waterButton);
+        content.Children.Add(stepsButton);
 
         scrollView.Content = content;
 
