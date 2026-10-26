@@ -14,7 +14,7 @@ public partial class BottomNav : ContentView
 
     private async void OnExerciseClicked(object sender, TappedEventArgs e)
     {
-        await Navigation.PushAsync(new View.Exercise());
+        await Navigation.PushAsync(new View.Exercise1());
     }
 
     private async void OnProgressClicked(object sender, TappedEventArgs e)
